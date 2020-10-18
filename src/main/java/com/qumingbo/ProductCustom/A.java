@@ -10,7 +10,7 @@ package com.qumingbo.ProductCustom;
  * 线程通信问题  ：生产者和消费者
  * 线程交替执行 操作同一个变量
  */
-public class Product {
+public class A {
     public static void main(String[] args) {
         Date date = new Date();
 
@@ -51,7 +51,7 @@ public class Product {
                     date.decrement();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
+                } 
             }
         },"D=").start();
     }
@@ -70,9 +70,10 @@ class Date {
      */
     public synchronized void increment() throws InterruptedException {
         while (num != 0) {
-            //等待
+            // 等待
             this.wait();
         }
+        // 业务
         num++;
         System.out.println(Thread.currentThread().getName() + num);
         //通知其他线程 +完成
