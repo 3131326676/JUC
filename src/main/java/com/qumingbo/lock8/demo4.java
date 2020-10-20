@@ -1,4 +1,4 @@
-package com.qumingbo.lock8;
+package com.qumingbo.Lock8;
 
 import java.util.concurrent.TimeUnit;
 
