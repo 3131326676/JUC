@@ -1,10 +1,8 @@
-package com.qumingbo.Unsafe;
+package com.qumingbo.ConcurrentSet;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * @author: 曲铭博
