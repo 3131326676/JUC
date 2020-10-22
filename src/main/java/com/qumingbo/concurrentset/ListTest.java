@@ -1,4 +1,4 @@
-package com.qumingbo.ConcurrentSet;
+package com.qumingbo.concurrentset;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;

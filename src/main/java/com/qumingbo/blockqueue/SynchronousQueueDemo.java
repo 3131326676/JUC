@@ -1,4 +1,4 @@
-package com.qumingbo.BlockQueue;
+package com.qumingbo.blockqueue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
@@ -7,7 +7,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author: 曲铭博
  * @Date: Created in 22:05 2020/10/21
- * @Description: 同步队列
+ * @Description: 同步队列 一个put操作必须对应一个take操作   否则会发生阻塞
+ *
  */
 public class SynchronousQueueDemo {
     public static void main(String[] args) {

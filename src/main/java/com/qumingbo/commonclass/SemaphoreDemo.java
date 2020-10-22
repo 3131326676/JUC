@@ -1,4 +1,4 @@
-package com.qumingbo.CommonClass;
+package com.qumingbo.commonclass;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;

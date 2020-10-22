@@ -1,4 +1,4 @@
-package com.qumingbo.ProductCustom;
+package com.qumingbo.productcustom;
 
 /**
  * @author qumingbo
@@ -51,7 +51,7 @@ public class A {
                     date.decrement();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                } 
+                }
             }
         },"D=").start();
     }

@@ -1,4 +1,4 @@
-package com.qumingbo.ConcurrentSet;
+package com.qumingbo.concurrentset;
 
 import java.util.HashSet;
 import java.util.Set;

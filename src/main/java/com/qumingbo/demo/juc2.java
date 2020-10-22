@@ -1,4 +1,4 @@
-package com.qumingbo.Demo;
+package com.qumingbo.demo;
 
 /**
  * @author qumingbo

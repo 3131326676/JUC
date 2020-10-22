@@ -1,4 +1,4 @@
-package com.qumingbo.ReadAndWrite;
+package com.qumingbo.readandwrite;
 
 import java.util.HashMap;
 import java.util.Map;

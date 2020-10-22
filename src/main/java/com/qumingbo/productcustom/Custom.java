@@ -1,4 +1,4 @@
-package com.qumingbo.ProductCustom;
+package com.qumingbo.productcustom;
 
 /**
  * @author qumingbo
