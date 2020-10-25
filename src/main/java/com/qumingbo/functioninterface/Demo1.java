@@ -16,7 +16,6 @@ public class Demo1 {
                 return 1;
             }
         };
-
         System.out.println(function.apply(1));
 
         // lambda版
