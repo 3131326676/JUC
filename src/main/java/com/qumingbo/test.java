@@ -1,6 +1,11 @@
 package com.qumingbo;
 
+import com.sun.org.apache.xalan.internal.xsltc.util.IntegerArray;
+
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author qumingbo
@@ -18,13 +23,8 @@ public class test {
         // String s3 = "asddsa";
         // Boolean aBoolean = ifReverse(s3);
         // System.out.println(aBoolean);
-
-        int arr[] = new int[]{6,2,7,4,9,5,1};
-        int len = arr.length - 1;
-        quickSort(arr, 0, len);
-        for (int i : arr) {
-            System.out.print(i + "\t");
-        }
+        int[] a = {3,2,2,3};
+        System.out.println(removeElement(a,3));
     }
 
     /**
@@ -116,5 +116,44 @@ public class test {
         quickSort(a, low, i - 1);
         //递归基准值右侧数组
         quickSort(a, i + 1, height);
+    }
+
+    /**
+     * 二分查找
+     *
+     * @param array 数组
+     * @param start 起始位置
+     * @param end   结束为止
+     * @param key   需要查找的值
+     * @return -1或者查找到的值的下标
+     */
+    public static int twoPoints(int[] array, int start, int end, int key) {
+        // 获取当前数组的中间数
+        int medium = (start + end) / 2;
+        if (start > end || key < array[start] || key > array[end]) {
+            return -1;
+        }
+
+        if (key > array[medium]) {
+            // 如果key比中间的数大  说明在中间数的右侧数组  递归右侧数组
+            return twoPoints(array, medium + 1, end, key);
+        } else if (key < array[medium]) {
+            // 如果key比中间的数小  说明在中间数的左侧数组  递归左侧数组
+            return twoPoints(array, start, medium - 1, key);
+        } else if (key == array[medium]) {
+            return medium;
+        }
+        return -1;
+
+    }
+
+    /**
+     * leetcode 27
+     * @param nums
+     * @param val
+     * @return
+     */
+    public static int removeElement(int[] nums, int val) {
+        return (int) Arrays.stream(nums).filter(e -> e != val).count();
     }
 }
