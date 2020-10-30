@@ -26,14 +26,14 @@ public class Demo1 {
         // 线程池用完关闭线程池
         try {
             for (int i = 0; i < 10; i++) {
-                executorService.execute(() -> {
+                executorService.submit(() -> {
                     System.out.println(Thread.currentThread().getName());
                 });
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            executorService.shutdown();
+            executorService.shutdownNow();
         }
     }
 }
