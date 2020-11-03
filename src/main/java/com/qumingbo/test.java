@@ -1,6 +1,7 @@
 package com.qumingbo;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author qumingbo
@@ -287,7 +288,7 @@ public class test {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == 1) {
-                    count += 1;
+                    count += 4;
                     if (i > 0 && grid[i - 1][j] == 1) {
                         nearby += 1;
                     }
@@ -304,7 +305,17 @@ public class test {
             }
         }
 
-        return count * 4 - nearby;
+        return count - nearby;
+    }
+
+    public static int[] intersection(int[] nums1, int[] nums2) {
+
+        List<Integer> collect = Arrays.stream(nums1).boxed().collect(Collectors.toList());
+        List<Integer> collect1 = Arrays.stream(nums2).boxed().collect(Collectors.toList());
+        collect.retainAll(collect1);
+
+        int[] ints = collect.stream().mapToInt(Integer::valueOf).distinct().toArray();
+        return ints;
     }
 
     /**
