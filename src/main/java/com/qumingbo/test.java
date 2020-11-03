@@ -1,11 +1,6 @@
 package com.qumingbo;
 
-import com.sun.org.apache.xalan.internal.xsltc.util.IntegerArray;
-
 import java.util.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * @author qumingbo
@@ -40,8 +35,13 @@ public class test {
         System.out.println(busyStudent(start, end, queryTime));
         System.out.println("--------------------------");
 
-        int[][] b = {{1,1}};
+        int[][] b = {{1, 1}};
         System.out.println(islandPerimeter(b));
+        System.out.println("--------------------------");
+
+
+        int[] A = {1,7,9,5,4,1,2};
+        System.out.println(validMountainArray(A));
     }
 
     /**
@@ -305,6 +305,52 @@ public class test {
         }
 
         return count * 4 - nearby;
+    }
+
+    /**
+     * leetcode 941 有效的山脉数组
+     *
+     * @param A
+     * @return
+     */
+    public static boolean validMountainArray(int[] A) {
+        // 数组长度小于三直接返回false
+        if (A.length < 3) {
+            return false;
+        }
+        // 最大值下标
+        int maxIndex = 0;
+        // 最大值的value
+        int maxValue = 0;
+
+        // 获取最大值的下标以及值
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] > maxValue) {
+                maxValue = A[i];
+                maxIndex = i;
+            }
+        }
+
+        // 如果最大值是在数组的最左边或者最右边就不可能是山脉数组  返回false
+        if(maxIndex == 0 || maxIndex == A.length - 1) {
+            return false;
+        }
+
+        // 从起始位置和最大值开始遍历 任意一侧不满足递增或者递减就返回false
+        for (int i = 0; i < maxIndex; i++) {
+            if (A[i] >= A[i+1]) {
+                return false;
+            }
+        }
+
+        for (int i = maxIndex; i < A.length - 1; i++) {
+            if (A[i] <= A[i+1]) {
+                return false;
+            }
+        }
+
+        // 否则返回true
+        return true;
     }
 }
 
