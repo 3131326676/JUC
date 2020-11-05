@@ -308,6 +308,12 @@ public class test {
         return count - nearby;
     }
 
+    /**
+     * leetcode 349 两个数组的交集
+     * @param nums1 数组1
+     * @param nums2 数组2
+     * @return 交集
+     */
     public static int[] intersection(int[] nums1, int[] nums2) {
 
         List<Integer> collect = Arrays.stream(nums1).boxed().collect(Collectors.toList());
