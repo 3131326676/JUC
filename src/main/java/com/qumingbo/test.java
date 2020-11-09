@@ -19,30 +19,33 @@ public class test {
         // String s3 = "asddsa";
         // Boolean aBoolean = ifReverse(s3);
         // System.out.println(aBoolean);
-        int[][] a = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        System.out.println(diagonalSum(a));
+        // int[][] a = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        // System.out.println(diagonalSum(a));
+        //
+        // ListNode listNode = new ListNode(1);
+        // ListNode listNode2 = new ListNode(0);
+        // ListNode listNode3 = new ListNode(1);
+        // listNode.next = listNode2;
+        // listNode2.next = listNode3;
+        // System.out.println(getDecimalValue(listNode));
+        //
+        // System.out.println(":::::::::::::::::::::::::");
+        // int[] start = {1, 2, 3};
+        // int[] end = {3, 2, 7};
+        // int queryTime = 4;
+        // System.out.println(busyStudent(start, end, queryTime));
+        // System.out.println("--------------------------");
+        //
+        // int[][] b = {{1, 1}};
+        // System.out.println(islandPerimeter(b));
+        // System.out.println("--------------------------");
+        //
+        //
+        // int[] A = {1, 7, 9, 5, 4, 1, 2};
+        // System.out.println(validMountainArray(A));
 
-        ListNode listNode = new ListNode(1);
-        ListNode listNode2 = new ListNode(0);
-        ListNode listNode3 = new ListNode(1);
-        listNode.next = listNode2;
-        listNode2.next = listNode3;
-        System.out.println(getDecimalValue(listNode));
-
-        System.out.println(":::::::::::::::::::::::::");
-        int[] start = {1, 2, 3};
-        int[] end = {3, 2, 7};
-        int queryTime = 4;
-        System.out.println(busyStudent(start, end, queryTime));
-        System.out.println("--------------------------");
-
-        int[][] b = {{1, 1}};
-        System.out.println(islandPerimeter(b));
-        System.out.println("--------------------------");
-
-
-        int[] A = {1,7,9,5,4,1,2};
-        System.out.println(validMountainArray(A));
+        int[] a = {0,1,2,3,4,5,6,7,8};
+        Arrays.stream(sortByBits(a)).forEach(System.out::println);
     }
 
     /**
@@ -267,9 +270,9 @@ public class test {
         int x = 1, y = 0;
         String[] split = s.split("");
         for (String s1 : split) {
-            if (s1.equals("A")) {
+            if ("A".equals(s1)) {
                 x = 2 * x + y;
-            } else if (s1.equals("B")) {
+            } else if ("B".equals(s1)) {
                 y = 2 * y + x;
             }
         }
@@ -310,6 +313,7 @@ public class test {
 
     /**
      * leetcode 349 两个数组的交集
+     *
      * @param nums1 数组1
      * @param nums2 数组2
      * @return 交集
@@ -349,25 +353,61 @@ public class test {
         }
 
         // 如果最大值是在数组的最左边或者最右边就不可能是山脉数组  返回false
-        if(maxIndex == 0 || maxIndex == A.length - 1) {
+        if (maxIndex == 0 || maxIndex == A.length - 1) {
             return false;
         }
 
         // 从起始位置和最大值开始遍历 任意一侧不满足递增或者递减就返回false
         for (int i = 0; i < maxIndex; i++) {
-            if (A[i] >= A[i+1]) {
+            if (A[i] >= A[i + 1]) {
                 return false;
             }
         }
 
         for (int i = maxIndex; i < A.length - 1; i++) {
-            if (A[i] <= A[i+1]) {
+            if (A[i] <= A[i + 1]) {
                 return false;
             }
         }
 
         // 否则返回true
         return true;
+    }
+
+    /**
+     * leetcode 1356.根据数字二进制下 1 的数目排序
+     *
+     * @param arr 需要排序的数组
+     * @return 排序之后的数组
+     */
+    public static int[] sortByBits(int[] arr) {
+        int[] array = Arrays.stream(arr).sorted().toArray();
+
+        String[] binary = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            binary[i] = Integer.toBinaryString(array[i]);
+        }
+
+        Map<Integer, Integer> map = new TreeMap<>();
+        for (int i = 0; i < binary.length; i++) {
+            int count = 0;
+            for (String s : binary[i].split("")) {
+                if (s.equals("1")) {
+                    count++;
+                }
+            }
+            map.put(i, count);
+        }
+
+        int[] ints =
+                map.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).mapToInt(Integer::valueOf).toArray();
+
+        int[] result = new int[array.length];
+        for (int i = 0; i < ints.length; i++) {
+            result[i] = array[ints[i]];
+        }
+
+        return result;
     }
 }
 
